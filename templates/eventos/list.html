@@ -1,0 +1,71 @@
+ <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> 
+ 
+ <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Lista de eventos</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre Evento</th>
+                      <th>Descripcion</th>
+                      <th>Nombre Escenario</th>
+                      <th>Ciudad</th>
+                      <th>Tickets</th>
+                      <th>Asistentes</th>
+                      <th>Direccion</th>
+                      <th>Fecha Inicio</th>
+                      <th>Fecha Fin</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre Evento</th>
+                      <th>Descripcion</th>
+                      <th>Nombre Escenario</th>
+                      <th>Ciudad</th>
+                      <th>Tickets</th>
+                      <th>Asistentes</th>
+                      <th>Direccion</th>
+                      <th>Fecha Inicio</th>
+                      <th>Fecha Fin</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                   {% if eventos %}
+                   {% for evento in eventos %}
+                    <tr>
+                        <td>{{ evento.id }}</td>
+                        <td>{{ evento.nombre_evento }}</td>
+                        <td>{{ evento.descripcion_evento }}</td>
+                        <td>{{ evento.nombre_escenario }}</td>
+                        <td>{{ evento.ciudad }}</td>
+                        <td>{{ evento.tickets }}</td>
+                        <td>{{ evento.asistentes }}</td>
+                        <td>{{ evento.direccion }}</td>
+                        <td>{{ evento.fecha_inicio_evento }}</td>
+                        <td>{{ evento.fecha_fin_evento }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <h1>No hay Eventos disponibles</h1>
+                    {% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+{% endblock %}

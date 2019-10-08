@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>HOLA</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+
+    </head>
+
+    <nav class="uk-navbar uk-navbar-container uk-margin">
+        <div class="uk-navbar-left">
+            <a href="#bar-mob" uk-icon="icon: menu" class="uk-navbar-toggle" uk-toggle></a>
+            <img class="logo-bar" src="{% static 'images/logo-blanco.png' %}">
+        </div>
+    </nav>
+
+        <div id="bar-mob" class=" uk-text-center uk-grid  uk-visible-toggle">
+            <ul class="uk-width-1-6@m  uk-nav-default uk-nav-parent-icon ver-bar" uk-nav>
+                <li class="uk-parent">
+                    <a uk-icon="icon: thumbnails" href="#">EVENTOS</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="#">Sub item</a></li>
+                        <li>
+                            <a href="#">S</a>
+                            <ul>
+                                <li><a href="#">Sub item</a></li>
+                                <li><a href="#">Sub item</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#">ASISTENTES</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="#">Sub item</a></li>
+                        <li><a href="#">Sub item</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#">ESCENARIOS</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="#">Sub item</a></li>
+                        <li><a href="#">Sub item</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent">
+                    <a href="#">USUARIOS</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="#">Sub item</a></li>
+                        <li><a href="#">Sub item</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+    <body>
+
+    {% block content %}
+    {% endblock %}
+
+    </body>
+
+<script src="{% static 'js/uikit.min.js' %}"></script>
+<script src="{% static 'js/uikit-icons.min.js' %}"></script>
+
+</html>
