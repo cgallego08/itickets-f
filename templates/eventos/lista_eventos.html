@@ -2,44 +2,175 @@
 {% load staticfiles %}
 
 {% block content %}
+
 <div class="page">
-      <div class="page-content">
-        <ul class="blocks blocks-100 blocks-xxl-4 blocks-lg-3 blocks-md-2" data-plugin="masonry">
-        {% for evento in eventos %}
-          <li class="masonry-item">
-            <div class="card card-shadow">
-              <div class="card-header cover">
-                <img class="cover-image" src="{% static 'global/photos/placeholder.png' %}" alt="...">
-              </div>
-              <div class="card-block">
-                <h3 class="card-title">{{ evento.nombre_evento }}</h3>
-                <p class="card-text type-link">
-                  <small>
-                    By
-                    <a href="javascript:void(0)">Nathan Watts</a>
-                    <a href="javascript:void(0)">05, 2017</a>
-                    <a href="javascript:void(0)">
-                      <span>3</span> Comments</a>
-                  </small>
-                </p>
-                <p class="card-text">{{ evento.descripcion_evento }}</p>
-              </div>
-              <div class="card-block">
-                <div class="card-actions float-right">
-                  <a href="javascript:void(0)">
-                  <h6>Numero Asistemtes</h6>
+  <div class="page-content">
+    <ul class="blocks blocks-100 blocks-xxl-4 blocks-lg-3 blocks-md-2" data-plugin="masonry">
+      {% for evento in eventos %}
+      <li class="masonry-item">
+        <div class="card card-shadow">
+          <div class="card-header cover">
+            <img class="cover-image" src="{{ evento.imagen }}" alt="...">
+          </div>
+          <div class="card-block">
+            <h3 class="card-title">{{ evento.nombre_evento }}</h3>
+            <p class="card-text type-link">
+              <small>
+                By
+                <a href="javascript:void(0)">Nathan Watts</a>
+                <a href="javascript:void(0)">{{ evento.fecha_inicio_evento }}</a>
+                <a href="javascript:void(0)">
+                  <span>{{ listaAsistente }}</span> Asistentes</a>
+              </small>
+            </p>
+            <p class="card-text">{{ evento.descripcion_evento }}</p>
+          </div>
+          <div class="card-block">
+            <div class="card-actions float-right">
+              <a href="javascript:void(0)">
                 <i class="icon md-accounts-alt" aria-hidden="true"></i>
                 <span>{{ listaAsistente }}</span>
               </a>
-                </div>
-                <button type="button" class="btn btn-info card-link">Read more</button>
-              </div>
-              {% endfor %}
             </div>
-          </li>
+            <button type="button" class="btn btn-info card-link" data-target="#exampleTabs" data-toggle="modal" type="button">Ver Detalles</button>
+          </div>
+          {% endfor %}
+        </div>
+      </li>
     </ul>
   </div>
-</div>
 
+
+  <div class="contenedor-btnflo">
+    <button class="botonF1" data-target="#exampleFillIn" data-toggle="modal" type="button">
+      <span>+</span>
+    </button>
+  </div>
+
+  <!-- Modal Crear evento -->
+  <div class="modal fade modal-fill-in" id="exampleFillIn" aria-hidden="false" aria-labelledby="exampleFillIn"
+    role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-simple">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="exampleFillInModalTitle">Crear Evento</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="col-xl-4 form-group">
+                <input type="text" class="form-control" name="firstName" placeholder="First Name">
+              </div>
+              <div class="col-xl-4 form-group">
+                <input type="email" class="form-control" name="lastName" placeholder="Last Name">
+              </div>
+              <div class="col-xl-4 form-group">
+                <input type="email" class="form-control" name="email" placeholder="Your Email">
+              </div>
+              <div class="col-xl-12">
+                <textarea class="form-control" rows="5" placeholder="Type your message"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Crear Evento -->
+
+  <!-- Modal Detalles Evento-->
+      <div class="modal fade" id="exampleTabs" aria-hidden="true" aria-labelledby="exampleModalTabs" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog modal-simple">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title" id="exampleModalTabs">Detalles de Evento</h4>
+            </div>
+
+            <ul class="nav nav-tabs nav-tabs-line" role="tablist">
+              <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#exampleLine1"
+                  aria-controls="exampleLine1" role="tab">Evento</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#exampleLine2"
+                  aria-controls="exampleLine2" role="tab">Asistentes</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#exampleLine3"
+                  aria-controls="exampleLine3" role="tab">Escenario</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#exampleLine4"
+                  aria-controls="exampleLine4" role="tab">Compartir</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#exampleLine5"
+                  aria-controls="exampleLine5" role="tab">Control de evento</a></li>    
+            </ul>
+
+            <div class="modal-body">
+              <div class="tab-content">
+                <div class="tab-pane active" id="exampleLine1" role="tabpanel">
+                <p> NOMBRE: {{ evento.nombre_evento }} </p>
+                  Insolens patientiamque recte caecilii gaudere alienae varias repetitis inscientia
+                  ipsos. Partiendo interpretum vult ludicra iam abest
+                  disputatum geometriaque inflammat probes, tandem
+                  ullum iuste texit mundus delicatissimi iactare,
+                  impeditur panaetium intellegentium afferat talem
+                  satisfacit numquid accedunt secumque perspiciatis,
+                  invenire inquam voluptaria virtute concederetur
+                  genus suavitate, inviti argumentum parentes, repudiandae
+                  aliud perspiciatis, latinas consul pluribus regula
+                  ceramico turbent, cogitavisse possunt suo tranquillitate.
+                </div>
+
+                <div class="tab-pane" id="exampleLine2" role="tabpanel">
+                  Tenuit omni magistra quale honoris, maluisti invidi, successerit feramus fere omnium
+                  impetum locus suscipiantur ullum, gessisse afranius
+                  stabilique repellendus longinquitate sentiamus
+                  torquatos rem. Bene continens, depulsa soluta domesticarum
+                  inscientia excruciant artes epicuri, huic similique
+                  constringendos probo animadversionis claris sententia
+                  atqui vocent constituit, epicuri hosti iniuste
+                  naturales multos, optimus animadvertat stoicis
+                  nullae, fieri futura tempore philosophia expleantur
+                  putarent doloris delectus viris.
+                </div>
+
+                <div class="tab-pane" id="exampleLine3" role="tabpanel">
+                  Cernimus nutu. Maioribus solet. Iustitiam conciliant reliquisti instituendarum
+                  solido quicquid, superstitione placet illis privatione
+                  clariora audeam repellat morbos accusantibus, quaeso
+                  copulationes. Percurri salutatus derigatur praeter
+                  involuta canes afflueret iam amotio quin. Dicent
+                  dialectica evertunt astris venire senserit. Vulgo
+                  supplicii amputata ipsarum ennius insolens meminerunt
+                  quisquam, volumus occulte l videor contenta numen,
+                  patrioque. Dixerit cernimus consequentium definitiones
+                  interrogari, maximo, avocent opes.
+                </div>
+
+                <div class="tab-pane" id="exampleLine4" role="tabpanel">
+                  <button type="button" class="btn btn-round btn-primary btn-pill-left waves-effect waves-classic">Pill Left</button>
+                  <button type="button" class="btn btn-round btn-primary btn-pill-right waves-effect waves-classic">Pill Right</button>
+                </div>
+
+                <div class="tab-pane" id="exampleLine5" role="tabpanel">
+                <p>asdbadbfsdbf</p>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Detalles Evento -->
+
+
+
+
+
+</div>
 
 {% endblock %}
