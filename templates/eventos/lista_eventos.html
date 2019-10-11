@@ -10,14 +10,14 @@
       <li class="masonry-item">
         <div class="card card-shadow">
           <div class="card-header cover">
-            <img class="cover-image" src="{{ evento.imagen }}" alt="...">
+            <img class="cover-image" src="{% static 'src/images/jbalvin-poster-evento.jpg' %}" alt="...">
           </div>
           <div class="card-block">
             <h3 class="card-title">{{ evento.nombre_evento }}</h3>
             <p class="card-text type-link">
               <small>
-                By
-                <a href="javascript:void(0)">Nathan Watts</a>
+                Creado por
+                <a href="javascript:void(0)">Cristian G</a>
                 <a href="javascript:void(0)">{{ evento.fecha_inicio_evento }}</a>
                 <a href="javascript:void(0)">
                   <span>{{ listaAsistente }}</span> Asistentes</a>
